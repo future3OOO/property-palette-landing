@@ -15,17 +15,17 @@ const PricingPackage = ({ features }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className="bg-white dark:bg-charcoal rounded-2xl shadow-xl overflow-hidden flex flex-col border border-gray-100/10 dark:border-gray-800/50 h-[800px]"
+      className="bg-white dark:bg-charcoal rounded-2xl shadow-xl overflow-hidden flex flex-col border border-gray-100 dark:border-gray-800 h-[800px]"
     >
-      <div className="p-8 border-b border-gray-100 dark:border-gray-800 bg-deep-teal dark:bg-light-teal">
-        <h2 className="text-3xl font-bold text-white dark:text-deep-teal mb-6">
+      <div className="p-8 bg-deep-teal dark:bg-light-teal">
+        <h2 className="text-4xl font-bold text-white dark:text-deep-teal mb-6">
           Property Partner Package
         </h2>
         <div className="flex items-baseline gap-2 mb-4">
-          <span className="text-5xl font-bold text-white dark:text-deep-teal">8%</span>
-          <span className="text-lg text-white/90 dark:text-deep-teal/90">+GST</span>
+          <span className="text-6xl font-bold text-white dark:text-deep-teal">8%</span>
+          <span className="text-xl text-white dark:text-deep-teal">+GST</span>
         </div>
-        <p className="text-lg text-white/90 dark:text-deep-teal/90">
+        <p className="text-xl text-white dark:text-deep-teal">
           Management fee with no hidden costs
         </p>
       </div>
@@ -66,7 +66,7 @@ const PricingPackage = ({ features }) => {
       <div className="p-8 mt-auto bg-deep-teal dark:bg-light-teal">
         <Button
           onClick={() => navigate('/contact')}
-          className="w-full bg-white hover:bg-cream dark:bg-deep-teal dark:hover:bg-charcoal text-deep-teal dark:text-white font-medium text-lg py-6 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+          className="w-full bg-white hover:bg-cream dark:bg-deep-teal dark:hover:bg-charcoal text-deep-teal dark:text-white font-medium text-xl py-6 h-auto rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
         >
           Get Started Now
           <ArrowRight className="ml-2 h-5 w-5" />
