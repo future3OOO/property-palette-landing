@@ -44,31 +44,28 @@ const TestimonialsSection = () => {
     mode: "snap",
     slides: {
       perView: 3,
-      spacing: 24,
+      spacing: 32,
     },
     breakpoints: {
       "(max-width: 1024px)": {
-        slides: { perView: 2, spacing: 16 }
+        slides: { perView: 2, spacing: 24 }
       },
       "(max-width: 640px)": {
-        slides: { perView: 1, spacing: 16 }
+        slides: { perView: 1, spacing: 20 }
       }
-    },
-    slideChanged() {
-      // Update active slide indicator
     }
   });
 
   return (
-    <section className="py-24 bg-white dark:bg-charcoal overflow-hidden">
+    <section className="py-32 bg-white dark:bg-charcoal overflow-hidden">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">
             <span className="text-deep-teal dark:text-soft-teal">What Our Clients </span>
             <span className="text-soft-teal dark:text-light-teal">Say</span>
           </h2>
@@ -79,27 +76,23 @@ const TestimonialsSection = () => {
 
         <div className="relative -mx-6 px-6">
           {/* Navigation Buttons */}
-          <div className="absolute top-1/2 -left-4 z-10 transform -translate-y-1/2">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="w-12 h-12 rounded-full bg-white/90 dark:bg-charcoal/90 backdrop-blur-sm shadow-lg hover:bg-white dark:hover:bg-charcoal"
-              onClick={() => instanceRef.current?.prev()}
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </Button>
-          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute top-1/2 -left-4 z-10 transform -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 dark:bg-charcoal/90 backdrop-blur-sm shadow-lg hover:bg-white dark:hover:bg-charcoal transition-all duration-300"
+            onClick={() => instanceRef.current?.prev()}
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </Button>
 
-          <div className="absolute top-1/2 -right-4 z-10 transform -translate-y-1/2">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="w-12 h-12 rounded-full bg-white/90 dark:bg-charcoal/90 backdrop-blur-sm shadow-lg hover:bg-white dark:hover:bg-charcoal"
-              onClick={() => instanceRef.current?.next()}
-            >
-              <ChevronRight className="h-6 w-6" />
-            </Button>
-          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute top-1/2 -right-4 z-10 transform -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 dark:bg-charcoal/90 backdrop-blur-sm shadow-lg hover:bg-white dark:hover:bg-charcoal transition-all duration-300"
+            onClick={() => instanceRef.current?.next()}
+          >
+            <ChevronRight className="h-6 w-6" />
+          </Button>
 
           {/* Slider */}
           <div ref={sliderRef} className="keen-slider overflow-visible">
@@ -111,32 +104,32 @@ const TestimonialsSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
               >
-                <Card className="h-[400px] bg-cream dark:bg-charcoal-gray border-none shadow-soft hover:shadow-medium transition-all duration-300">
-                  <div className="p-6 h-full flex flex-col">
-                    <div className="mb-4">
-                      <Quote className="w-8 h-8 text-deep-teal dark:text-light-teal opacity-50" />
+                <Card className="h-[420px] bg-cream dark:bg-charcoal-gray border-none shadow-soft hover:shadow-medium transition-all duration-300 mx-2">
+                  <div className="p-8 h-full flex flex-col">
+                    <div className="mb-6">
+                      <Quote className="w-10 h-10 text-deep-teal dark:text-light-teal opacity-50" />
                     </div>
 
-                    <div className="flex mb-4">
+                    <div className="flex mb-6">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star 
                           key={i} 
-                          className="w-4 h-4 text-deep-teal dark:text-light-teal fill-current" 
+                          className="w-5 h-5 text-deep-teal dark:text-light-teal fill-current" 
                         />
                       ))}
                     </div>
 
                     <div className="flex-grow overflow-y-auto scrollbar-thin scrollbar-thumb-deep-teal/20 scrollbar-track-transparent pr-2">
-                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
                         {testimonial.content}
                       </p>
                     </div>
 
-                    <div className="mt-4 pt-4 border-t border-deep-teal/10 dark:border-light-teal/10">
-                      <p className="font-semibold text-deep-teal dark:text-light-teal">
+                    <div className="mt-6 pt-6 border-t border-deep-teal/10 dark:border-light-teal/10">
+                      <p className="font-semibold text-lg text-deep-teal dark:text-light-teal">
                         {testimonial.name}
                       </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                      <p className="text-gray-500 dark:text-gray-400">
                         {testimonial.type}
                       </p>
                     </div>
