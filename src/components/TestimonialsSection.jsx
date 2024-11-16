@@ -33,14 +33,34 @@ const testimonials = [
     content: "McKenzie was easy to communicate with, quick to follow up if any issues arose around the rental property. I found McKenzie to be a great property manager and would highly recommend his services."
   },
   {
+    name: "Brendan Stafford",
+    type: "Property Owner",
+    content: "Great communication, great support and a straightforward way to help me get my tricky property ready for renting. Highly recommend Mckenzie and the property partners team."
+  },
+  {
     name: "Sean Dudson",
     type: "Property Owner",
     content: "McKenzie outperformed in terms of the rental income we asked to the point where he covered his own fee. I have recommended Property Partner to clients and friends and all have been blown away by the service provided."
   },
   {
+    name: "Leith Skinner",
+    type: "Former Tenant",
+    content: "As a tenant, I found Property Partner very professional and personable to deal with. Any concerns/questions were addressed in a prompt and respectful manner ensuring that the tenant felt supported."
+  },
+  {
+    name: "Jake Mitchell",
+    type: "Property Owner",
+    content: "Property Partner has managed my rental property for the past 2 years and during that 2 years they've done an amazing job. McKenzie has been fantastic to deal with and someone I can trust and turn to if I have any questions."
+  },
+  {
     name: "Anna Shevchenko",
     type: "Former Tenant",
     content: "I had a pleasure to be McKenzie's tenant for one and a half years. He was very professional, supportive and fair. He replied immediately when I had a concern and resolved the issues straight away. Definitely the best property manager I've had."
+  },
+  {
+    name: "Gavvy Dhillon",
+    type: "Former Tenant",
+    content: "It was fantastic experience with property management. Very reliable and helpful people even after leaving the rental property. Always refer them if someone looking for property."
   }
 ];
 
