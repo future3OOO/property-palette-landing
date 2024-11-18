@@ -15,6 +15,7 @@ import RatesOfRemuneration from '@/components/management-agreement/RatesOfRemune
 import AvailabilityAndTerm from '@/components/management-agreement/AvailabilityAndTerm';
 import RentAndBond from '@/components/management-agreement/RentAndBond';
 import ComplianceInformation from '@/components/management-agreement/ComplianceInformation';
+import StepIndicator from '@/components/RentalAppraisal/StepIndicator';
 
 const formSections = [
   {
