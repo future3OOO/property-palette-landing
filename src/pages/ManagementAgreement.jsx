@@ -3,13 +3,19 @@ import { toast } from "sonner";
 import PropertyAddress from '@/components/management-agreement/PropertyAddress';
 import AgentDetails from '@/components/management-agreement/AgentDetails';
 import OwnerDetails from '@/components/management-agreement/OwnerDetails';
+import BankDetails from '@/components/management-agreement/BankDetails';
+import EmergencyContact from '@/components/management-agreement/EmergencyContact';
+import ManagementSection from '@/components/management-agreement/ManagementSection';
 import { Button } from "@/components/ui/button";
 
 const ManagementAgreement = () => {
   const [expandedSections, setExpandedSections] = useState([
     'propertyAddress',
     'agentDetails',
-    'ownerDetails'
+    'ownerDetails',
+    'bankDetails',
+    'emergencyContact',
+    'managementSection'
   ]);
 
   const handleSubmit = (e) => {
@@ -40,6 +46,21 @@ const ManagementAgreement = () => {
         />
         
         <OwnerDetails 
+          expandedSections={expandedSections}
+          setExpandedSections={setExpandedSections}
+        />
+
+        <BankDetails 
+          expandedSections={expandedSections}
+          setExpandedSections={setExpandedSections}
+        />
+
+        <EmergencyContact 
+          expandedSections={expandedSections}
+          setExpandedSections={setExpandedSections}
+        />
+
+        <ManagementSection 
           expandedSections={expandedSections}
           setExpandedSections={setExpandedSections}
         />
