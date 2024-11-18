@@ -53,14 +53,22 @@ const formSections = [
 const ManagementAgreement = () => {
   const [currentSection, setCurrentSection] = useState(0);
   const [expandedSections, setExpandedSections] = useState([]);
+  const [completedSections, setCompletedSections] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     toast.success("Management agreement submitted successfully!");
   };
 
+  const handleSectionComplete = (sectionIndex) => {
+    if (!completedSections.includes(sectionIndex)) {
+      setCompletedSections(prev => [...prev, sectionIndex]);
+    }
+  };
+
   const nextSection = () => {
     if (currentSection < formSections.length - 1) {
+      handleSectionComplete(currentSection);
       setCurrentSection(prev => prev + 1);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -70,6 +78,15 @@ const ManagementAgreement = () => {
     if (currentSection > 0) {
       setCurrentSection(prev => prev - 1);
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleStepClick = (step) => {
+    if (step <= Math.max(...completedSections, currentSection + 1)) {
+      setCurrentSection(step - 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      toast.error("Please complete the current section first");
     }
   };
 
@@ -84,25 +101,11 @@ const ManagementAgreement = () => {
             Complete this form to establish a property management agreement. All fields are required unless marked optional.
           </p>
 
-          {/* Progress Steps */}
-          <div className="flex justify-between mb-8 relative">
-            <div className="absolute top-1/2 h-0.5 w-full bg-gray-200 dark:bg-gray-700 -z-10" />
-            {formSections.map((section, index) => (
-              <div key={index} className="flex flex-col items-center">
-                <div 
-                  className={`w-8 h-8 rounded-full flex items-center justify-center mb-2 transition-colors
-                    ${index <= currentSection 
-                      ? 'bg-deep-teal dark:bg-light-teal text-white' 
-                      : 'bg-gray-200 dark:bg-gray-700 text-gray-500'}`}
-                >
-                  {index + 1}
-                </div>
-                <span className="text-sm hidden md:block text-gray-600 dark:text-gray-300">
-                  {section.title}
-                </span>
-              </div>
-            ))}
-          </div>
+          <StepIndicator 
+            currentStep={currentSection + 1}
+            completedSteps={completedSections}
+            onStepClick={handleStepClick}
+          />
         </div>
 
         <motion.div
