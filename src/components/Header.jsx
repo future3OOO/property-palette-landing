@@ -15,6 +15,7 @@ const Header = ({ isDarkMode, setIsDarkMode }) => {
         category: "Property Management",
         items: [
           <Link key="landlord-services" to="/landlord-services" className="w-full block">Landlord Services</Link>,
+          <Link key="management-agreement" to="/management-agreement" className="w-full block">Management Agreement</Link>,
           "Property Management",
           "Tenant Screening",
           "Property Marketing",
