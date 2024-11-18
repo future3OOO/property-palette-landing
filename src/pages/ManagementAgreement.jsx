@@ -32,12 +32,12 @@ const formSections = [
       { Component: AgentDetails, title: "Agent Details" },
       { Component: ManagementSection, title: "Management Terms" },
       { Component: HealthyHomesExitClause, title: "Healthy Homes Exit Clause" },
+      { Component: RatesOfRemuneration, title: "Rates of Remuneration" },
     ]
   },
   {
     title: "Financial Details",
     components: [
-      { Component: RatesOfRemuneration, title: "Rates of Remuneration" },
       { Component: RentAndBond, title: "Rent and Bond" },
       { Component: BankDetails, title: "Bank Details" },
     ]
