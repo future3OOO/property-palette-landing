@@ -1,14 +1,20 @@
 import React from 'react';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import Section from '@/components/shared/Section';
 
-const AgentDetails = () => {
-  return (
+const AgentDetails = ({ expandedSections, setExpandedSections }) => (
+  <Section 
+    title="Agent Details - PCBU" 
+    id="agentDetails" 
+    expandedSections={expandedSections} 
+    setExpandedSections={setExpandedSections}
+  >
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
         <Label htmlFor="company">Property management company</Label>
         <Input 
-          id="company" 
+          id="company"
           placeholder="Enter company name"
           className="mt-1"
         />
@@ -16,7 +22,7 @@ const AgentDetails = () => {
       <div>
         <Label htmlFor="officePhone">Office phone</Label>
         <Input 
-          id="officePhone" 
+          id="officePhone"
           placeholder="Enter office phone"
           className="mt-1"
         />
@@ -24,7 +30,7 @@ const AgentDetails = () => {
       <div className="col-span-2">
         <Label htmlFor="businessAddress">Business address</Label>
         <Input 
-          id="businessAddress" 
+          id="businessAddress"
           placeholder="Enter business address"
           className="mt-1"
         />
@@ -32,7 +38,7 @@ const AgentDetails = () => {
       <div>
         <Label htmlFor="managerName">Property manager's name</Label>
         <Input 
-          id="managerName" 
+          id="managerName"
           placeholder="Enter manager's name"
           className="mt-1"
         />
@@ -40,7 +46,7 @@ const AgentDetails = () => {
       <div>
         <Label htmlFor="managerPhone">Phone</Label>
         <Input 
-          id="managerPhone" 
+          id="managerPhone"
           placeholder="Enter phone number"
           className="mt-1"
         />
@@ -48,7 +54,7 @@ const AgentDetails = () => {
       <div>
         <Label htmlFor="managerMobile">Mobile</Label>
         <Input 
-          id="managerMobile" 
+          id="managerMobile"
           placeholder="Enter mobile number"
           className="mt-1"
         />
@@ -56,14 +62,14 @@ const AgentDetails = () => {
       <div>
         <Label htmlFor="managerEmail">Email</Label>
         <Input 
-          id="managerEmail" 
+          id="managerEmail"
           type="email"
           placeholder="Enter email address"
           className="mt-1"
         />
       </div>
     </div>
-  );
-};
+  </Section>
+);
 
 export default AgentDetails;

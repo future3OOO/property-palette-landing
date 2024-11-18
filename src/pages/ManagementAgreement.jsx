@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { toast } from "sonner";
-import Section from '@/components/shared/Section';
 import PropertyAddress from '@/components/management-agreement/PropertyAddress';
 import AgentDetails from '@/components/management-agreement/AgentDetails';
+import OwnerDetails from '@/components/management-agreement/OwnerDetails';
 import { Button } from "@/components/ui/button";
 
 const ManagementAgreement = () => {
-  const [expandedSections, setExpandedSections] = useState(['property-details', 'agent-details']);
+  const [expandedSections, setExpandedSections] = useState([
+    'propertyAddress',
+    'agentDetails',
+    'ownerDetails'
+  ]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,23 +29,20 @@ const ManagementAgreement = () => {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <Section
-          id="property-details"
-          title="Property Details"
+        <PropertyAddress 
           expandedSections={expandedSections}
           setExpandedSections={setExpandedSections}
-        >
-          <PropertyAddress />
-        </Section>
-
-        <Section
-          id="agent-details"
-          title="Agent Details - PCBU"
+        />
+        
+        <AgentDetails 
           expandedSections={expandedSections}
           setExpandedSections={setExpandedSections}
-        >
-          <AgentDetails />
-        </Section>
+        />
+        
+        <OwnerDetails 
+          expandedSections={expandedSections}
+          setExpandedSections={setExpandedSections}
+        />
 
         <div className="flex justify-end mt-8">
           <Button
