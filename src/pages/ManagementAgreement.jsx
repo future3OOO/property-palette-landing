@@ -6,6 +6,11 @@ import OwnerDetails from '@/components/management-agreement/OwnerDetails';
 import BankDetails from '@/components/management-agreement/BankDetails';
 import EmergencyContact from '@/components/management-agreement/EmergencyContact';
 import ManagementSection from '@/components/management-agreement/ManagementSection';
+import HealthyHomesExitClause from '@/components/management-agreement/HealthyHomesExitClause';
+import RatesOfRemuneration from '@/components/management-agreement/RatesOfRemuneration';
+import AvailabilityAndTerm from '@/components/management-agreement/AvailabilityAndTerm';
+import RentAndBond from '@/components/management-agreement/RentAndBond';
+import ComplianceInformation from '@/components/management-agreement/ComplianceInformation';
 import { Button } from "@/components/ui/button";
 
 const ManagementAgreement = () => {
@@ -15,7 +20,12 @@ const ManagementAgreement = () => {
     'ownerDetails',
     'bankDetails',
     'emergencyContact',
-    'managementSection'
+    'managementSection',
+    'healthyHomes',
+    'remuneration',
+    'availability',
+    'rentBond',
+    'compliance'
   ]);
 
   const handleSubmit = (e) => {
@@ -61,6 +71,31 @@ const ManagementAgreement = () => {
         />
 
         <ManagementSection 
+          expandedSections={expandedSections}
+          setExpandedSections={setExpandedSections}
+        />
+
+        <HealthyHomesExitClause 
+          expandedSections={expandedSections}
+          setExpandedSections={setExpandedSections}
+        />
+
+        <RatesOfRemuneration 
+          expandedSections={expandedSections}
+          setExpandedSections={setExpandedSections}
+        />
+
+        <AvailabilityAndTerm 
+          expandedSections={expandedSections}
+          setExpandedSections={setExpandedSections}
+        />
+
+        <RentAndBond 
+          expandedSections={expandedSections}
+          setExpandedSections={setExpandedSections}
+        />
+
+        <ComplianceInformation 
           expandedSections={expandedSections}
           setExpandedSections={setExpandedSections}
         />
