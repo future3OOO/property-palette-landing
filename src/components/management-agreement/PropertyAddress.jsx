@@ -6,40 +6,16 @@ const PropertyAddress = () => {
   return (
     <div className="space-y-4">
       <div>
-        <Label htmlFor="street">Street Address</Label>
+        <Label htmlFor="address">Rental property address</Label>
         <Input 
-          id="street" 
-          placeholder="Enter street address"
+          id="address" 
+          placeholder="Enter rental property address"
           className="mt-1"
         />
       </div>
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <Label htmlFor="suburb">Suburb</Label>
-          <Input 
-            id="suburb" 
-            placeholder="Enter suburb"
-            className="mt-1"
-          />
-        </div>
-        <div>
-          <Label htmlFor="city">City</Label>
-          <Input 
-            id="city" 
-            placeholder="Enter city"
-            className="mt-1"
-          />
-        </div>
-      </div>
-      <div>
-        <Label htmlFor="postcode">Postcode</Label>
-        <Input 
-          id="postcode" 
-          placeholder="Enter postcode"
-          className="mt-1"
-          type="number"
-        />
-      </div>
+      <p className="text-sm text-gray-600 dark:text-gray-400">
+        To be exclusively managed by the Property Management company referred to on page 2, of the Management Agreement. The address of the property is considered "the workplace" and "same matter" under section 34 of the Health and Safety at Work Act 2015.
+      </p>
     </div>
   );
 };
