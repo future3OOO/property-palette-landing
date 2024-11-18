@@ -15,8 +15,17 @@ const RatesOfRemuneration = ({ expandedSections, setExpandedSections }) => (
         It is agreed the agent shall be paid in consideration for managing the property(s). Standard rates below (if applicable):
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <Label htmlFor="rate-0">% + GST on all rents collected</Label>
+          <Input 
+            id="rate-0"
+            type="number"
+            value="8"
+            readOnly
+            className="mt-1 bg-gray-100 dark:bg-gray-800"
+          />
+        </div>
         {[
-          '% + GST on all rents collected',
           '% + GST of the cost of arranging and/or supervising, repairs, maintenance or renovations',
           '% + GST on all project management',
           'for each award of exemplary damages against the tenant(s)',
@@ -32,11 +41,13 @@ const RatesOfRemuneration = ({ expandedSections, setExpandedSections }) => (
           '$ + GST Inventory list fee (semi/fully furnished)'
         ].map((label, index) => (
           <div key={index} className="space-y-2">
-            <Label htmlFor={`rate-${index}`}>{label}</Label>
+            <Label htmlFor={`rate-${index + 1}`}>{label}</Label>
             <Input 
-              id={`rate-${index}`}
+              id={`rate-${index + 1}`}
               type="number"
-              className="mt-1"
+              value="0"
+              readOnly
+              className="mt-1 bg-gray-100 dark:bg-gray-800"
             />
           </div>
         ))}
@@ -44,7 +55,9 @@ const RatesOfRemuneration = ({ expandedSections, setExpandedSections }) => (
           <Label htmlFor="letting-fees">Letting Fees</Label>
           <Input 
             id="letting-fees"
-            className="mt-1"
+            value="0"
+            readOnly
+            className="mt-1 bg-gray-100 dark:bg-gray-800"
           />
         </div>
       </div>
