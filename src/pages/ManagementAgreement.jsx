@@ -120,7 +120,7 @@ const ManagementAgreement = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               {formSections[currentSection].components.map(({ Component, title }, index) => (
                 <Component
-                  key={index}
+                  key={`${title}-${index}`}
                   expandedSections={expandedSections}
                   setExpandedSections={setExpandedSections}
                 />
