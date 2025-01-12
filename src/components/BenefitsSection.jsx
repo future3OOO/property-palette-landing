@@ -48,7 +48,7 @@ const benefits = [
 
 const BenefitsSection = () => {
   return (
-    <section className="py-24 bg-white dark:bg-charcoal-gray">
+    <section className="py-24 bg-gradient-soft">
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -56,9 +56,8 @@ const BenefitsSection = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            <span className="text-deep-teal dark:text-soft-teal">Why Choose </span>
-            <span className="text-soft-teal dark:text-light-teal">Property Partner?</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gradient">
+            Why Choose Property Partner?
           </h2>
           <p className="text-gray-600 dark:text-gray-300 text-lg">
             We make property management simple and stress-free with our comprehensive service offering
@@ -73,12 +72,12 @@ const BenefitsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="h-full p-6 hover:shadow-lg transition-shadow duration-300 bg-white dark:bg-charcoal-gray border border-gray-100 dark:border-gray-800">
+              <Card className="hover-gradient h-full p-6 bg-gradient-card shadow-card">
                 <div className="flex flex-col items-center text-center space-y-4">
-                  <div className="p-3 rounded-full bg-gradient-to-br from-deep-teal/10 to-light-teal/10">
-                    <benefit.icon className="w-6 h-6 text-deep-teal dark:text-light-teal" />
+                  <div className="p-3 rounded-full bg-gradient-accent">
+                    <benefit.icon className="w-6 h-6 text-white dark:text-deep-teal" />
                   </div>
-                  <h3 className="font-semibold text-lg text-deep-teal dark:text-light-teal">
+                  <h3 className="font-semibold text-lg text-gradient">
                     {benefit.title}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">
