@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const CallToActionSection = () => {
   return (
-    <section className="bg-gradient-accent py-16 md:py-20">
+    <section className="bg-deep-teal dark:bg-light-teal py-16 md:py-20">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -19,7 +19,7 @@ const CallToActionSection = () => {
         </p>
         <Button 
           size="lg"
-          className="glass-effect text-deep-teal dark:text-light-teal font-medium text-base py-5 px-8 h-auto hover:shadow-xl transition-all duration-300 rounded-xl border-gradient"
+          className="glass-effect text-deep-teal dark:text-light-teal font-medium text-base py-5 px-8 h-auto hover:shadow-xl transition-all duration-300 rounded-xl border border-white/20 dark:border-deep-teal/20"
         >
           Get Started Now
         </Button>

@@ -65,7 +65,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-inter font-semibold tracking-tight;
+    @apply font-inter font-semibold tracking-tight text-deep-teal dark:text-light-teal;
   }
 
   .dark {
@@ -102,57 +102,16 @@
     text-wrap: balance;
   }
   
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-deep-teal via-soft-teal to-light-teal;
-  }
-
-  .text-gradient-accent {
-    @apply bg-clip-text text-transparent bg-gradient-to-br from-deep-teal via-soft-teal to-light-teal;
-  }
-
-  .bg-gradient-soft {
-    @apply bg-gradient-to-br from-cream via-soft-gray to-white dark:from-charcoal dark:via-dark-charcoal dark:to-charcoal;
-  }
-
-  .bg-gradient-accent {
-    @apply bg-gradient-to-br from-deep-teal via-soft-teal to-light-teal dark:from-light-teal dark:via-bright-teal dark:to-bright-teal;
-  }
-
-  .bg-gradient-reverse {
-    @apply bg-gradient-to-tl from-deep-teal via-soft-teal to-light-teal dark:from-light-teal dark:via-bright-teal dark:to-bright-teal;
-  }
-
-  .bg-gradient-card {
-    @apply bg-gradient-to-br from-white via-cream to-soft-gray dark:from-charcoal dark:via-dark-charcoal dark:to-charcoal;
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/80 dark:bg-charcoal/80;
   }
 
   .shadow-card {
     @apply shadow-soft hover:shadow-medium transition-shadow duration-300;
   }
 
-  .glass-effect {
-    @apply backdrop-blur-md bg-white/80 dark:bg-charcoal/80;
-  }
-
-  .border-gradient {
-    @apply border border-transparent bg-gradient-to-r from-deep-teal to-light-teal dark:from-light-teal dark:to-bright-teal;
-    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: destination-out;
-    mask-composite: exclude;
-  }
-
-  .hover-gradient {
-    @apply relative overflow-hidden transition-all duration-300;
-  }
-
-  .hover-gradient::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-deep-teal/10 to-light-teal/10 dark:from-light-teal/10 dark:to-bright-teal/10 opacity-0 transition-opacity duration-300;
-  }
-
-  .hover-gradient:hover::before {
-    @apply opacity-100;
+  .hover-effect {
+    @apply relative overflow-hidden transition-all duration-300 hover:bg-deep-teal/5 dark:hover:bg-light-teal/5;
   }
 }
 

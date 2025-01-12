@@ -5,7 +5,7 @@ import { ArrowRight, Phone } from 'lucide-react';
 
 const HeroSection = () => {
   return (
-    <section className="relative py-20 lg:py-32 overflow-hidden bg-gradient-soft">
+    <section className="relative py-20 lg:py-32 overflow-hidden bg-cream dark:bg-charcoal">
       <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02]" />
       <div className="container mx-auto px-6 relative">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
@@ -15,10 +15,10 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
             className="flex-1 text-center lg:text-left"
           >
-            <span className="inline-block mb-6 text-gradient-accent font-medium">
+            <span className="inline-block mb-6 text-deep-teal dark:text-light-teal font-medium">
               Transform Your Property Management
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gradient">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-deep-teal dark:text-light-teal">
               Simplified Property Management for Modern Landlords
             </h1>
             <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0">
@@ -27,7 +27,7 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button
                 size="lg"
-                className="bg-gradient-accent hover:opacity-90 text-white dark:text-deep-teal font-medium transition-all group"
+                className="bg-deep-teal hover:bg-soft-teal text-white dark:bg-light-teal dark:hover:bg-bright-teal dark:text-deep-teal font-medium transition-all group"
               >
                 Get Started Now
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -35,7 +35,7 @@ const HeroSection = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-gradient hover:opacity-90 text-deep-teal dark:text-light-teal transition-all group"
+                className="border-deep-teal hover:bg-deep-teal/5 text-deep-teal dark:border-light-teal dark:hover:bg-light-teal/5 dark:text-light-teal transition-all group"
               >
                 <Phone className="mr-2 h-4 w-4" />
                 Contact Us
@@ -56,7 +56,7 @@ const HeroSection = () => {
                 transition={{ duration: 1, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
                 className="relative z-20"
               >
-                <div className="w-[300px] h-[600px] mx-auto rounded-3xl shadow-2xl border-8 border-white dark:border-gray-800 bg-gradient-accent p-4">
+                <div className="w-[300px] h-[600px] mx-auto rounded-3xl shadow-2xl border-8 border-white dark:border-gray-800 bg-deep-teal dark:bg-light-teal p-4">
                   <div className="h-full w-full bg-white dark:bg-charcoal rounded-2xl overflow-hidden">
                     <img 
                       src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
@@ -77,7 +77,7 @@ const HeroSection = () => {
                 className="absolute top-20 -left-10 z-30"
               >
                 <div className="glass-effect p-4 rounded-lg shadow-lg">
-                  <p className="text-sm font-medium text-gradient">Smart Management</p>
+                  <p className="text-sm font-medium text-deep-teal dark:text-light-teal">Smart Management</p>
                 </div>
               </motion.div>
 
@@ -88,7 +88,7 @@ const HeroSection = () => {
                 className="absolute bottom-20 -right-10 z-30"
               >
                 <div className="glass-effect p-4 rounded-lg shadow-lg">
-                  <p className="text-sm font-medium text-gradient">24/7 Support</p>
+                  <p className="text-sm font-medium text-deep-teal dark:text-light-teal">24/7 Support</p>
                 </div>
               </motion.div>
             </div>
