@@ -13,21 +13,21 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex-1 text-center lg:text-left"
+            className="flex-1 text-left"
           >
-            <span className="inline-block mb-6 text-deep-teal dark:text-light-teal font-medium">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep-teal/10 dark:bg-light-teal/10 text-deep-teal dark:text-light-teal text-sm font-medium mb-6">
               Transform Your Property Management
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-deep-teal dark:text-light-teal">
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-deep-teal dark:text-light-teal leading-tight">
               Simplified Property Management for Modern Landlords
             </h1>
-            <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl">
               Your Partner in Stress-Free and Transparent Rental Property Management, Ensuring Positive Experiences for All
-            </h2>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
-                className="bg-deep-teal hover:bg-soft-teal text-white dark:bg-light-teal dark:hover:bg-bright-teal dark:text-deep-teal font-medium transition-all group"
+                className="bg-deep-teal hover:bg-soft-teal text-white dark:bg-light-teal dark:hover:bg-bright-teal dark:text-deep-teal font-medium transition-all group rounded-full"
               >
                 Get Started Now
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -35,7 +35,7 @@ const HeroSection = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-deep-teal hover:bg-deep-teal/5 text-deep-teal dark:border-light-teal dark:hover:bg-light-teal/5 dark:text-light-teal transition-all group"
+                className="border-deep-teal hover:bg-deep-teal/5 text-deep-teal dark:border-light-teal dark:hover:bg-light-teal/5 dark:text-light-teal transition-all group rounded-full"
               >
                 <Phone className="mr-2 h-4 w-4" />
                 Contact Us
@@ -56,7 +56,7 @@ const HeroSection = () => {
                 transition={{ duration: 1, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
                 className="relative z-20"
               >
-                <div className="w-[300px] h-[600px] mx-auto rounded-3xl shadow-2xl border-8 border-white dark:border-gray-800 bg-deep-teal dark:bg-light-teal p-4">
+                <div className="w-[300px] h-[600px] mx-auto rounded-3xl shadow-2xl border-8 border-white dark:border-gray-800 bg-white dark:bg-charcoal p-4">
                   <div className="h-full w-full bg-white dark:bg-charcoal rounded-2xl overflow-hidden">
                     <img 
                       src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
@@ -67,8 +67,8 @@ const HeroSection = () => {
                 </div>
               </motion.div>
 
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-deep-teal/10 dark:bg-light-teal/5 rounded-full blur-3xl -z-10" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-soft-teal/10 dark:bg-bright-teal/5 rounded-full blur-2xl -z-10" />
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-deep-teal/10 dark:bg-light-teal/10 rounded-full blur-xl" />
+              <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-deep-teal/10 dark:bg-light-teal/10 rounded-full blur-xl" />
 
               <motion.div
                 initial={{ x: -20, y: -20 }}
@@ -76,7 +76,7 @@ const HeroSection = () => {
                 transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
                 className="absolute top-20 -left-10 z-30"
               >
-                <div className="glass-effect p-4 rounded-lg shadow-lg">
+                <div className="bg-white dark:bg-charcoal p-4 rounded-xl shadow-lg border border-deep-teal/10 dark:border-light-teal/10">
                   <p className="text-sm font-medium text-deep-teal dark:text-light-teal">Smart Management</p>
                 </div>
               </motion.div>
@@ -87,7 +87,7 @@ const HeroSection = () => {
                 transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 0.5 }}
                 className="absolute bottom-20 -right-10 z-30"
               >
-                <div className="glass-effect p-4 rounded-lg shadow-lg">
+                <div className="bg-white dark:bg-charcoal p-4 rounded-xl shadow-lg border border-deep-teal/10 dark:border-light-teal/10">
                   <p className="text-sm font-medium text-deep-teal dark:text-light-teal">24/7 Support</p>
                 </div>
               </motion.div>
