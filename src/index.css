@@ -7,7 +7,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -106,28 +106,40 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-deep-teal to-light-teal;
   }
 
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-deep-teal via-soft-teal to-light-teal;
+  }
+
   .bg-gradient-soft {
     @apply bg-gradient-to-br from-cream to-soft-gray dark:from-charcoal dark:to-dark-charcoal;
   }
 
   .bg-gradient-accent {
-    @apply bg-gradient-to-br from-deep-teal to-light-teal dark:from-light-teal dark:to-bright-teal;
+    @apply bg-gradient-to-br from-deep-teal via-soft-teal to-light-teal dark:from-light-teal dark:via-bright-teal dark:to-bright-teal;
+  }
+
+  .bg-gradient-reverse {
+    @apply bg-gradient-to-tl from-deep-teal via-soft-teal to-light-teal dark:from-light-teal dark:via-bright-teal dark:to-bright-teal;
+  }
+
+  .bg-gradient-card {
+    @apply bg-gradient-to-br from-white via-cream to-soft-gray dark:from-charcoal dark:via-dark-charcoal dark:to-charcoal;
   }
 
   .shadow-card {
     @apply shadow-soft hover:shadow-medium transition-shadow duration-300;
   }
 
-  .scrollbar-thin {
-    scrollbar-width: thin;
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/80 dark:bg-charcoal/80;
   }
 
-  .scrollbar-thumb-deep-teal\/20 {
-    scrollbar-color: rgba(0, 109, 119, 0.2) transparent;
-  }
-
-  .scrollbar-track-transparent {
-    scrollbar-track-color: transparent;
+  .border-gradient {
+    @apply border border-transparent bg-gradient-to-r from-deep-teal to-light-teal dark:from-light-teal dark:to-bright-teal;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
   }
 }
 
@@ -138,38 +150,4 @@
 
 .animate-pulse-slow {
   animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Reviews Widget Styles */
-.romw-reviews {
-  @apply font-inter !important;
-}
-
-.dark .romw-reviews {
-  @apply text-gray-200 !important;
-}
-
-.romw-reviews [class*="review-card"] {
-  @apply bg-white dark:bg-charcoal border border-gray-100 dark:border-gray-800 rounded-xl shadow-soft hover:shadow-medium transition-all duration-300 !important;
-}
-
-.romw-reviews [class*="review-text"] {
-  @apply text-gray-600 dark:text-gray-300 !important;
-}
-
-.romw-reviews [class*="review-author"] {
-  @apply text-deep-teal dark:text-light-teal font-semibold !important;
-}
-
-.romw-reviews [class*="star-rating"] {
-  @apply text-deep-teal dark:text-light-teal !important;
-}
-
-/* Keen Slider Customization */
-.keen-slider {
-  @apply py-4;
-}
-
-.keen-slider__slide {
-  @apply transition-transform duration-300;
 }
