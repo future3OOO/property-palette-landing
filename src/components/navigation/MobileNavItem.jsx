@@ -1,18 +1,22 @@
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
-const MobileNavItem = ({ title, items }) => {
+const MobileNavItem = memo(({ title, items }) => {
   const [isOpen, setIsOpen] = useState(false);
   
+  const handleToggle = useCallback(() => {
+    setIsOpen(prev => !prev);
+  }, []);
+
   return (
     <div className="transform-gpu" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
       <Button
         variant="ghost"
         className="w-full justify-between text-gray-700 dark:text-gray-300 
                  hover:text-deep-teal dark:hover:text-light-teal transition-colors"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleToggle}
         style={{
           willChange: 'transform, color',
           transform: 'translateZ(0)',
@@ -69,12 +73,8 @@ const MobileNavItem = ({ title, items }) => {
       )}
     </div>
   );
-};
-
-// Prevent unnecessary re-renders
-export default memo(MobileNavItem, (prevProps, nextProps) => {
-  return (
-    prevProps.title === nextProps.title &&
-    prevProps.items === nextProps.items
-  );
 });
+
+MobileNavItem.displayName = 'MobileNavItem';
+
+export default MobileNavItem;

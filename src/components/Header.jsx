@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, memo } from 'react';
 import { Menu, Sun, Moon } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -9,13 +9,31 @@ import MobileNavItem from './navigation/MobileNavItem';
 import ContactDialog from './ContactDialog';
 import { navigationConfig } from '../constants/navigationConfig';
 
-const Header = ({ isDarkMode, setIsDarkMode }) => {
+// Memoize navigation sections to prevent unnecessary rerenders
+const navigationSections = {
+  forOwners: navigationConfig.forOwners,
+  forTenants: navigationConfig.forTenants,
+  resources: navigationConfig.resources,
+  about: navigationConfig.about,
+};
+
+const Header = memo(({ isDarkMode, setIsDarkMode }) => {
   const handleDarkModeChange = useCallback((checked) => {
     setIsDarkMode(checked);
   }, [setIsDarkMode]);
 
+  // Pre-render navigation items for instant hover response
+  const navItems = useCallback(() => (
+    <>
+      <NavItem title="For Owners" items={navigationSections.forOwners} />
+      <NavItem title="For Tenants" items={navigationSections.forTenants} />
+      <NavItem title="Resources" items={navigationSections.resources} />
+      <NavItem title="About" items={navigationSections.about} />
+    </>
+  ), []);
+
   return (
-    <header className="sticky top-0 bg-white/95 dark:bg-charcoal/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300 ease-in-out border-b border-gray-100 dark:border-gray-800">
+    <header className="sticky top-0 bg-white/95 dark:bg-charcoal/95 backdrop-blur-md shadow-sm z-50 transition-all duration-75 ease-in-out border-b border-gray-100 dark:border-gray-800">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -58,11 +76,13 @@ const Header = ({ isDarkMode, setIsDarkMode }) => {
           </Link>
 
           {/* Main Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8 flex-1 justify-center" aria-label="Main navigation">
-            <NavItem title="For Owners" items={navigationConfig.forOwners} />
-            <NavItem title="For Tenants" items={navigationConfig.forTenants} />
-            <NavItem title="Resources" items={navigationConfig.resources} />
-            <NavItem title="About" items={navigationConfig.about} />
+          <nav className="hidden lg:flex items-center space-x-8 flex-1 justify-center transform-gpu" 
+               aria-label="Main navigation"
+               style={{
+                 willChange: 'transform',
+                 transform: 'translateZ(0)',
+               }}>
+            {navItems()}
             <Link 
               to="/pricing" 
               className="text-gray-700 dark:text-gray-300 hover:text-deep-teal dark:hover:text-bright-teal transition-colors font-medium"
@@ -112,10 +132,10 @@ const Header = ({ isDarkMode, setIsDarkMode }) => {
               </SheetTrigger>
               <SheetContent side="right" className="w-80 bg-white dark:bg-charcoal">
                 <nav className="flex flex-col space-y-4 mt-8">
-                  <MobileNavItem title="For Owners" items={navigationConfig.forOwners} />
-                  <MobileNavItem title="For Tenants" items={navigationConfig.forTenants} />
-                  <MobileNavItem title="Resources" items={navigationConfig.resources} />
-                  <MobileNavItem title="About" items={navigationConfig.about} />
+                  <MobileNavItem title="For Owners" items={navigationSections.forOwners} />
+                  <MobileNavItem title="For Tenants" items={navigationSections.forTenants} />
+                  <MobileNavItem title="Resources" items={navigationSections.resources} />
+                  <MobileNavItem title="About" items={navigationSections.about} />
                   <Link 
                     to="/pricing" 
                     className="block text-lg text-gray-700 dark:text-gray-300 hover:text-deep-teal dark:hover:text-light-teal"
@@ -138,6 +158,8 @@ const Header = ({ isDarkMode, setIsDarkMode }) => {
       </div>
     </header>
   );
-};
+});
 
-export default React.memo(Header);
+Header.displayName = 'Header';
+
+export default Header;
