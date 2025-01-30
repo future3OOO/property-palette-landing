@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -20,11 +20,13 @@ const ROICalculatorSection = React.lazy(() => import('./components/ROICalculator
 const CallToActionSection = React.lazy(() => import('./components/CallToActionSection'));
 
 const App = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
         <ScrollProgress />
-        <Header />
+        <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
         <main className="flex-grow">
           <Routes>
             <Route 
