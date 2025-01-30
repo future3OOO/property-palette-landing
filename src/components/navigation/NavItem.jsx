@@ -1,5 +1,4 @@
 import React from 'react';
-import { ChevronDown } from 'lucide-react';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -14,8 +13,7 @@ const NavItem = ({ title, items }) => {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger className="group h-10 px-4 py-2 text-gray-700 dark:text-gray-100 hover:text-deep-teal dark:hover:text-bright-teal transition-colors bg-transparent hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent">
-            <span>{title}</span>
-            <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]:rotate-180" />
+            {title}
           </NavigationMenuTrigger>
           <NavigationMenuContent className="min-w-[320px] bg-white dark:bg-dark-charcoal rounded-lg p-6 shadow-medium">
             {items.map((section, index) => (
