@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from 'lucide-react';
 
-export const HeroSection = () => (
+const HeroSection = () => (
   <section className="relative py-24 overflow-hidden">
     <div className="container mx-auto px-6">
       <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -49,3 +49,5 @@ export const HeroSection = () => (
     </div>
   </section>
 );
+
+export default HeroSection;

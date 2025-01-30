@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-export const ServiceCard = ({ icon, title, description }) => (
+const ServiceCard = ({ icon, title, description }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -14,3 +14,5 @@ export const ServiceCard = ({ icon, title, description }) => (
     <p className="text-gray-600 dark:text-gray-300">{description}</p>
   </motion.div>
 );
+
+export default ServiceCard;
