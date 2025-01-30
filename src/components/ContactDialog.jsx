@@ -1,44 +1,64 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import ContactInfo from './contact/ContactInfo';
-import ContactForm from './contact/ContactForm';
+import React, { useState } from 'react';
+import { useForm } from "react-hook-form";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
+import ContactDialogHeader from './contact/ContactDialogHeader';
+import ContactFormFields from './contact/ContactFormFields';
 
 const ContactDialog = ({ children }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const { toast } = useToast();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm();
 
-  const handleSubmitSuccess = React.useCallback(() => {
-    setIsOpen(false);
-  }, []);
+  const onSubmit = async (data) => {
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      console.log('Form submitted:', data);
+      
+      toast({
+        title: "Message Sent!",
+        description: "We'll get back to you as soon as possible.",
+      });
+      
+      reset();
+      setOpen(false);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
+      });
+    }
+  };
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[900px] p-0 bg-white dark:bg-charcoal overflow-hidden">
-        <div className="grid md:grid-cols-5 h-full">
-          {/* Contact Information Sidebar */}
-          <div className="md:col-span-2 bg-gradient-to-br from-deep-teal to-light-teal dark:from-light-teal dark:to-bright-teal p-8 text-white dark:text-deep-teal">
-            <DialogHeader>
-              <DialogTitle className="text-2xl font-bold text-white dark:text-deep-teal mb-6">
-                Contact Us
-              </DialogTitle>
-            </DialogHeader>
-            <ContactInfo />
+      <DialogContent className="sm:max-w-[425px]">
+        <ContactDialogHeader />
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mt-4">
+          <ContactFormFields register={register} errors={errors} />
+          <div className="flex justify-end">
+            <Button 
+              type="submit" 
+              disabled={isSubmitting}
+              className="bg-deep-teal hover:bg-light-teal text-white dark:bg-light-teal dark:hover:bg-deep-teal dark:text-deep-teal transition-colors"
+            >
+              {isSubmitting ? "Sending..." : "Send Message"}
+            </Button>
           </div>
-
-          {/* Contact Form */}
-          <div className="md:col-span-3 p-8">
-            <ContactForm onSubmitSuccess={handleSubmitSuccess} />
-          </div>
-        </div>
+        </form>
       </DialogContent>
     </Dialog>
   );

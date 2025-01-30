@@ -113,6 +113,20 @@
   .hover-effect {
     @apply relative overflow-hidden transition-all duration-300 hover:bg-deep-teal/5 dark:hover:bg-light-teal/5;
   }
+
+  /* Optimized navigation hover effects */
+  .nav-menu-item {
+    @apply relative;
+  }
+
+  .nav-submenu {
+    @apply absolute opacity-0 invisible transform-gpu translate-y-2 
+           transition-all duration-150 ease-out will-change-transform;
+  }
+
+  .nav-menu-item:hover .nav-submenu {
+    @apply opacity-100 visible translate-y-0;
+  }
 }
 
 @keyframes pulse-slow {
