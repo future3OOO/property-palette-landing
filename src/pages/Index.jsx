@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useCallback } from 'react';
 import Header from '../components/Header';
 import HeroSection from '../components/HeroSection';
 import ServicesSection from '../components/ServicesSection';
@@ -10,7 +10,7 @@ import Footer from '../components/Footer';
 import LiveChat from '../components/LiveChat';
 import ScrollProgress from '../components/ScrollProgress';
 
-// Memoize components that don't depend on frequently changing state
+// Memoize components that don't depend on props
 const MemoizedHeroSection = memo(HeroSection);
 const MemoizedServicesSection = memo(ServicesSection);
 const MemoizedBenefitsSection = memo(BenefitsSection);
@@ -22,10 +22,20 @@ const Index = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  // Memoize the chat toggle handler
+  const handleChatToggle = useCallback((isOpen) => {
+    setIsChatOpen(isOpen);
+  }, []);
+
+  // Memoize the dark mode toggle handler
+  const handleDarkModeToggle = useCallback((isDark) => {
+    setIsDarkMode(isDark);
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen">
       <ScrollProgress />
-      <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      <Header isDarkMode={isDarkMode} setIsDarkMode={handleDarkModeToggle} />
       <main className="flex-grow">
         <MemoizedHeroSection />
         <MemoizedServicesSection />
@@ -35,9 +45,9 @@ const Index = () => {
         <MemoizedCallToActionSection />
       </main>
       <Footer />
-      <LiveChat isChatOpen={isChatOpen} setIsChatOpen={setIsChatOpen} />
+      <LiveChat isChatOpen={isChatOpen} setIsChatOpen={handleChatToggle} />
     </div>
   );
 };
 
-export default Index;
+export default memo(Index);

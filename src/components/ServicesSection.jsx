@@ -1,36 +1,54 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
-import { Home, Shield, ClipboardCheck, HeartHandshake, ArrowRight } from 'lucide-react';
-import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
+import { Button } from "@/components/ui/button";
+import { services } from '../constants/services';
 
-const services = [
-  {
-    icon: Home,
-    title: "Property Management",
-    description: "Full-service property management including rent collection, maintenance coordination, and regular inspections.",
-    color: "from-[#8B5CF6] to-[#7C3AED]"
-  },
-  {
-    icon: Shield,
-    title: "Tenant Selection",
-    description: "Comprehensive tenant screening with thorough background and reference checks to find reliable tenants.",
-    color: "from-[#F97316] to-[#EA580C]",
-    link: "/faq?tab=tenancy"
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Compliance Management",
-    description: "Stay compliant with the latest regulations including Healthy Homes Standards and tenancy laws.",
-    color: "from-[#8B5CF6] to-[#7C3AED]"
-  },
-  {
-    icon: HeartHandshake,
-    title: "Relationship Management",
-    description: "Building positive relationships between landlords and tenants for long-term success.",
-    color: "from-[#F97316] to-[#EA580C]"
-  }
-];
+// Move animation variants outside
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
+
+const ServiceCard = memo(({ service, index }) => (
+  <motion.div
+    key={index}
+    variants={cardVariants}
+    initial="hidden"
+    whileInView="visible"
+    transition={{ duration: 0.5, delay: index * 0.1 }}
+    className="relative group"
+  >
+    <div className={`bg-gradient-to-br ${service.color} text-white rounded-xl p-3 inline-block mb-4`}>
+      <service.icon className="w-6 h-6" />
+    </div>
+    <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
+      {service.title}
+    </h3>
+    <p className="text-[#8E9196] dark:text-gray-300 mb-4">
+      {service.description}
+    </p>
+    {service.link ? (
+      <Link to={service.link}>
+        <Button
+          variant="ghost"
+          className="text-[#8B5CF6] dark:text-[#F97316] hover:text-[#7C3AED] dark:hover:text-[#EA580C] group/button"
+        >
+          Learn more
+          <ArrowRight className="ml-2 w-4 h-4 group-hover/button:translate-x-1 transition-transform" />
+        </Button>
+      </Link>
+    ) : (
+      <Button
+        variant="ghost"
+        className="text-[#8B5CF6] dark:text-[#F97316] hover:text-[#7C3AED] dark:hover:text-[#EA580C] group/button"
+      >
+        Learn more
+        <ArrowRight className="ml-2 w-4 h-4 group-hover/button:translate-x-1 transition-transform" />
+      </Button>
+    )}
+  </motion.div>
+));
 
 const ServicesSection = () => {
   return (
@@ -49,44 +67,7 @@ const ServicesSection = () => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative group"
-            >
-              <div className="bg-white dark:bg-charcoal border border-gray-100 dark:border-gray-800 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-                <div className={`bg-gradient-to-br ${service.color} text-white rounded-xl p-3 inline-block mb-4`}>
-                  <service.icon className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
-                  {service.title}
-                </h3>
-                <p className="text-[#8E9196] dark:text-gray-300 mb-4">
-                  {service.description}
-                </p>
-                {service.link ? (
-                  <Link to={service.link}>
-                    <Button
-                      variant="ghost"
-                      className="text-[#8B5CF6] dark:text-[#F97316] hover:text-[#7C3AED] dark:hover:text-[#EA580C] group/button"
-                    >
-                      Learn more
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover/button:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                ) : (
-                  <Button
-                    variant="ghost"
-                    className="text-[#8B5CF6] dark:text-[#F97316] hover:text-[#7C3AED] dark:hover:text-[#EA580C] group/button"
-                  >
-                    Learn more
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover/button:translate-x-1 transition-transform" />
-                  </Button>
-                )}
-              </div>
-            </motion.div>
+            <ServiceCard key={index} service={service} index={index} />
           ))}
         </div>
       </div>
@@ -94,4 +75,4 @@ const ServicesSection = () => {
   );
 };
 
-export default ServicesSection;
+export default memo(ServicesSection);

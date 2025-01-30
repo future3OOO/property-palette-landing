@@ -1,50 +1,29 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
-import { DollarSign, Camera, ClipboardCheck, Search, PhoneCall, UserCircle2, LayoutDashboard, LineChart } from 'lucide-react';
+import { benefits } from '../constants/benefits';
 import { Card } from "@/components/ui/card";
 
-const benefits = [
-  {
-    icon: DollarSign,
-    title: "Transparent Pricing",
-    description: "No hidden fees - transparent 8.5% management fee"
-  },
-  {
-    icon: Camera,
-    title: "Professional Media",
-    description: "Professional photography included"
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Detailed Reports",
-    description: "Detailed property condition reports"
-  },
-  {
-    icon: Search,
-    title: "Regular Inspections",
-    description: "Regular property inspections"
-  },
-  {
-    icon: PhoneCall,
-    title: "24/7 Support",
-    description: "24/7 maintenance coordination"
-  },
-  {
-    icon: UserCircle2,
-    title: "Personal Manager",
-    description: "Dedicated property manager"
-  },
-  {
-    icon: LayoutDashboard,
-    title: "Online Portal",
-    description: "Online owner portal access"
-  },
-  {
-    icon: LineChart,
-    title: "Financial Reports",
-    description: "Monthly financial reporting"
-  }
-];
+const BenefitCard = memo(({ benefit, index }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: index * 0.1 }}
+  >
+    <Card className="h-full p-6 bg-white dark:bg-charcoal border border-deep-teal/10 dark:border-light-teal/10 hover:border-deep-teal dark:hover:border-light-teal transition-colors duration-300">
+      <div className="flex flex-col items-start space-y-4">
+        <div className="p-3 rounded-lg bg-deep-teal/10 dark:bg-light-teal/10">
+          <benefit.icon className="w-6 h-6 text-deep-teal dark:text-light-teal" />
+        </div>
+        <h3 className="font-semibold text-lg text-deep-teal dark:text-light-teal">
+          {benefit.title}
+        </h3>
+        <p className="text-gray-600 dark:text-gray-300 text-sm">
+          {benefit.description}
+        </p>
+      </div>
+    </Card>
+  </motion.div>
+));
 
 const BenefitsSection = () => {
   return (
@@ -69,26 +48,7 @@ const BenefitsSection = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {benefits.map((benefit, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Card className="h-full p-6 bg-white dark:bg-charcoal border border-deep-teal/10 dark:border-light-teal/10 hover:border-deep-teal dark:hover:border-light-teal transition-colors duration-300">
-                <div className="flex flex-col items-start space-y-4">
-                  <div className="p-3 rounded-lg bg-deep-teal/10 dark:bg-light-teal/10">
-                    <benefit.icon className="w-6 h-6 text-deep-teal dark:text-light-teal" />
-                  </div>
-                  <h3 className="font-semibold text-lg text-deep-teal dark:text-light-teal">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    {benefit.description}
-                  </p>
-                </div>
-              </Card>
-            </motion.div>
+            <BenefitCard key={index} benefit={benefit} index={index} />
           ))}
         </div>
       </div>
@@ -96,4 +56,4 @@ const BenefitsSection = () => {
   );
 };
 
-export default BenefitsSection;
+export default memo(BenefitsSection);

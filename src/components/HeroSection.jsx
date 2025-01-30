@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone } from 'lucide-react';
+
+// Move animation variants outside component to prevent recreation
+const containerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
+
+const floatingVariants = {
+  initial: { y: 20 },
+  animate: { 
+    y: 0,
+    transition: { 
+      duration: 1, 
+      repeat: Infinity, 
+      repeatType: "reverse", 
+      ease: "easeInOut" 
+    }
+  }
+};
 
 const HeroSection = () => {
   return (
@@ -99,4 +118,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default memo(HeroSection);
