@@ -5,7 +5,7 @@ import 'keen-slider/keen-slider.min.css';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import TestimonialCard from './testimonials/TestimonialCard';
-import { testimonials } from '../constants/testimonials';
+import { testimonials } from '@/constants/testimonials';
 
 const TestimonialsSection = () => {
   const [sliderRef, instanceRef] = useKeenSlider({
