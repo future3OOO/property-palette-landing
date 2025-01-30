@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, memo } from 'react';
 import Header from '../components/Header';
 import HeroSection from '../components/HeroSection';
 import ServicesSection from '../components/ServicesSection';
@@ -8,39 +8,31 @@ import TestimonialsSection from '../components/TestimonialsSection';
 import CallToActionSection from '../components/CallToActionSection';
 import Footer from '../components/Footer';
 import LiveChat from '../components/LiveChat';
-import ProgressBar from '../components/ProgressBar';
+import ScrollProgress from '../components/ScrollProgress';
+
+// Memoize components that don't depend on frequently changing state
+const MemoizedHeroSection = memo(HeroSection);
+const MemoizedServicesSection = memo(ServicesSection);
+const MemoizedBenefitsSection = memo(BenefitsSection);
+const MemoizedTestimonialsSection = memo(TestimonialsSection);
+const MemoizedROICalculatorSection = memo(ROICalculatorSection);
+const MemoizedCallToActionSection = memo(CallToActionSection);
 
 const Index = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [isDarkMode, setIsDarkMode] = useState(false); // Changed to false for light mode default
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const currentScroll = window.pageYOffset;
-      setScrollProgress((currentScroll / totalScroll) * 100);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', isDarkMode);
-  }, [isDarkMode]);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   return (
     <div className="flex flex-col min-h-screen">
-      <ProgressBar scrollProgress={scrollProgress} />
+      <ScrollProgress />
       <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       <main className="flex-grow">
-        <HeroSection />
-        <ServicesSection />
-        <BenefitsSection />
-        <TestimonialsSection />
-        <ROICalculatorSection />
-        <CallToActionSection />
+        <MemoizedHeroSection />
+        <MemoizedServicesSection />
+        <MemoizedBenefitsSection />
+        <MemoizedTestimonialsSection />
+        <MemoizedROICalculatorSection />
+        <MemoizedCallToActionSection />
       </main>
       <Footer />
       <LiveChat isChatOpen={isChatOpen} setIsChatOpen={setIsChatOpen} />
