@@ -1,33 +1,32 @@
-import React, { useState, memo, useCallback } from 'react';
+import React, { useState, memo, useCallback, Suspense } from 'react';
 import Header from '../components/Header';
 import HeroSection from '../components/HeroSection';
 import ServicesSection from '../components/ServicesSection';
 import BenefitsSection from '../components/BenefitsSection';
-import ROICalculatorSection from '../components/ROICalculatorSection';
-import TestimonialsSection from '../components/TestimonialsSection';
-import CallToActionSection from '../components/CallToActionSection';
+import ScrollProgress from '../components/ScrollProgress';
 import Footer from '../components/Footer';
 import LiveChat from '../components/LiveChat';
-import ScrollProgress from '../components/ScrollProgress';
 
-// Memoize components that don't depend on props
-const MemoizedHeroSection = memo(HeroSection);
-const MemoizedServicesSection = memo(ServicesSection);
-const MemoizedBenefitsSection = memo(BenefitsSection);
-const MemoizedTestimonialsSection = memo(TestimonialsSection);
-const MemoizedROICalculatorSection = memo(ROICalculatorSection);
-const MemoizedCallToActionSection = memo(CallToActionSection);
+// Lazy load below-the-fold components
+const TestimonialsSection = React.lazy(() => import('../components/TestimonialsSection'));
+const ROICalculatorSection = React.lazy(() => import('../components/ROICalculatorSection'));
+const CallToActionSection = React.lazy(() => import('../components/CallToActionSection'));
+
+// Loading fallback component
+const SectionLoader = () => (
+  <div className="w-full h-96 flex items-center justify-center">
+    <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-deep-teal"></div>
+  </div>
+);
 
 const Index = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Memoize the chat toggle handler
   const handleChatToggle = useCallback((isOpen) => {
     setIsChatOpen(isOpen);
   }, []);
 
-  // Memoize the dark mode toggle handler
   const handleDarkModeToggle = useCallback((isDark) => {
     setIsDarkMode(isDark);
   }, []);
@@ -37,12 +36,18 @@ const Index = () => {
       <ScrollProgress />
       <Header isDarkMode={isDarkMode} setIsDarkMode={handleDarkModeToggle} />
       <main className="flex-grow">
-        <MemoizedHeroSection />
-        <MemoizedServicesSection />
-        <MemoizedBenefitsSection />
-        <MemoizedTestimonialsSection />
-        <MemoizedROICalculatorSection />
-        <MemoizedCallToActionSection />
+        <HeroSection />
+        <ServicesSection />
+        <BenefitsSection />
+        <Suspense fallback={<SectionLoader />}>
+          <TestimonialsSection />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <ROICalculatorSection />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
+          <CallToActionSection />
+        </Suspense>
       </main>
       <Footer />
       <LiveChat isChatOpen={isChatOpen} setIsChatOpen={handleChatToggle} />
