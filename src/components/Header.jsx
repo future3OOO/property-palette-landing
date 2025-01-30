@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Menu, Sun, Moon } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -7,60 +7,12 @@ import { Link } from 'react-router-dom';
 import NavItem from './navigation/NavItem';
 import MobileNavItem from './navigation/MobileNavItem';
 import ContactDialog from './ContactDialog';
+import { navigationConfig } from '../constants/navigationConfig';
 
 const Header = ({ isDarkMode, setIsDarkMode }) => {
-  const navigationItems = {
-    forOwners: [
-      {
-        category: "Property Management",
-        items: [
-          <Link key="landlord-services" to="/landlord-services" className="block hover:translate-x-1 transition-transform">
-            Landlord Services
-          </Link>,
-          <Link key="management-agreement" to="/management-agreement" className="block hover:translate-x-1 transition-transform">
-            Management Agreement
-          </Link>,
-          "Property Management",
-          "Tenant Screening",
-          "Property Marketing",
-          "Rent Collection",
-          "Financial Reporting"
-        ]
-      }
-    ],
-    forTenants: [
-      {
-        category: "Tenant Services",
-        items: [
-          <Link key="tenant-services" to="/tenant-services" className="w-full block">Tenant Services</Link>,
-          <Link key="maintenance" to="/services/maintenance" className="w-full block">Maintenance Request</Link>,
-          <Link key="rental-application" to="/rental-application" className="w-full block">Rental Application</Link>,
-          "Rent Payment",
-          "Lease Renewal"
-        ]
-      }
-    ],
-    resources: [
-      {
-        category: "Help Center",
-        items: [
-          <Link key="faq" to="/faq" className="w-full block">FAQ</Link>,
-          "Blog",
-          "Guides"
-        ]
-      }
-    ],
-    about: [
-      {
-        category: "Company",
-        items: [
-          <Link key="about" to="/about" className="w-full block">Our Story</Link>,
-          "Team",
-          "Careers"
-        ]
-      }
-    ]
-  };
+  const handleDarkModeChange = useCallback((checked) => {
+    setIsDarkMode(checked);
+  }, [setIsDarkMode]);
 
   return (
     <header className="sticky top-0 bg-white/95 dark:bg-charcoal/95 backdrop-blur-md shadow-sm z-50 transition-all duration-300 ease-in-out border-b border-gray-100 dark:border-gray-800">
@@ -107,10 +59,10 @@ const Header = ({ isDarkMode, setIsDarkMode }) => {
 
           {/* Main Navigation */}
           <nav className="hidden lg:flex items-center space-x-8 flex-1 justify-center" aria-label="Main navigation">
-            <NavItem title="For Owners" items={navigationItems.forOwners} />
-            <NavItem title="For Tenants" items={navigationItems.forTenants} />
-            <NavItem title="Resources" items={navigationItems.resources} />
-            <NavItem title="About" items={navigationItems.about} />
+            <NavItem title="For Owners" items={navigationConfig.forOwners} />
+            <NavItem title="For Tenants" items={navigationConfig.forTenants} />
+            <NavItem title="Resources" items={navigationConfig.resources} />
+            <NavItem title="About" items={navigationConfig.about} />
             <Link 
               to="/pricing" 
               className="text-gray-700 dark:text-gray-300 hover:text-deep-teal dark:hover:text-bright-teal transition-colors font-medium"
@@ -131,7 +83,7 @@ const Header = ({ isDarkMode, setIsDarkMode }) => {
               <Sun className="h-4 w-4 text-gray-600 dark:text-gray-400" />
               <Switch
                 checked={isDarkMode}
-                onCheckedChange={setIsDarkMode}
+                onCheckedChange={handleDarkModeChange}
                 className="data-[state=checked]:bg-light-teal"
                 aria-label="Toggle dark mode"
               />
@@ -160,10 +112,10 @@ const Header = ({ isDarkMode, setIsDarkMode }) => {
               </SheetTrigger>
               <SheetContent side="right" className="w-80 bg-white dark:bg-charcoal">
                 <nav className="flex flex-col space-y-4 mt-8">
-                  <MobileNavItem title="For Owners" items={navigationItems.forOwners} />
-                  <MobileNavItem title="For Tenants" items={navigationItems.forTenants} />
-                  <MobileNavItem title="Resources" items={navigationItems.resources} />
-                  <MobileNavItem title="About" items={navigationItems.about} />
+                  <MobileNavItem title="For Owners" items={navigationConfig.forOwners} />
+                  <MobileNavItem title="For Tenants" items={navigationConfig.forTenants} />
+                  <MobileNavItem title="Resources" items={navigationConfig.resources} />
+                  <MobileNavItem title="About" items={navigationConfig.about} />
                   <Link 
                     to="/pricing" 
                     className="block text-lg text-gray-700 dark:text-gray-300 hover:text-deep-teal dark:hover:text-light-teal"
@@ -188,4 +140,4 @@ const Header = ({ isDarkMode, setIsDarkMode }) => {
   );
 };
 
-export default Header;
+export default React.memo(Header);

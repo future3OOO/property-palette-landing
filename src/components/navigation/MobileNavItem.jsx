@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
@@ -22,8 +23,17 @@ const MobileNavItem = ({ title, items }) => {
               <h3 className="text-deep-teal dark:text-light-teal font-medium">{section.category}</h3>
               <div className="ml-2 space-y-2">
                 {section.items.map((item, itemIndex) => (
-                  <div key={itemIndex} className="text-gray-600 dark:text-gray-300 hover:text-deep-teal dark:hover:text-light-teal transition-colors">
-                    {typeof item === 'string' ? item : item}
+                  <div 
+                    key={itemIndex} 
+                    className="text-gray-600 dark:text-gray-300 hover:text-deep-teal dark:hover:text-light-teal transition-colors"
+                  >
+                    {item.to ? (
+                      <Link to={item.to} className="block">
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <span className="cursor-pointer">{item.label}</span>
+                    )}
                   </div>
                 ))}
               </div>
@@ -35,4 +45,4 @@ const MobileNavItem = ({ title, items }) => {
   );
 };
 
-export default MobileNavItem;
+export default memo(MobileNavItem);

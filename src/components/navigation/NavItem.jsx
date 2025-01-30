@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -27,10 +28,15 @@ const NavItem = ({ title, items }) => {
                       key={itemIndex}
                       className="text-gray-700 dark:text-gray-300 hover:text-deep-teal dark:hover:text-bright-teal transition-colors text-sm py-1"
                     >
-                      {typeof item === 'string' ? (
-                        <span className="cursor-pointer">{item}</span>
+                      {item.to ? (
+                        <Link 
+                          to={item.to} 
+                          className="block hover:translate-x-1 transition-transform"
+                        >
+                          {item.label}
+                        </Link>
                       ) : (
-                        item
+                        <span className="cursor-pointer">{item.label}</span>
                       )}
                     </div>
                   ))}
@@ -44,4 +50,4 @@ const NavItem = ({ title, items }) => {
   );
 };
 
-export default NavItem;
+export default memo(NavItem);
