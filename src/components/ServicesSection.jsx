@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { services } from '../constants/services';
+import { ArrowRight } from 'lucide-react';
 
 // Move animation variants outside
 const cardVariants = {
