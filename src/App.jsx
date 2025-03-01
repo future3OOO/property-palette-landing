@@ -1,3 +1,4 @@
+
 import React, { Suspense, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
@@ -13,6 +14,7 @@ import LandlordServices from './pages/LandlordServices';
 import TenantServices from './pages/TenantServices';
 import FAQPage from './pages/FAQPage';
 import NotFoundPage from './pages/NotFoundPage';
+import ManagementAgreement from './pages/ManagementAgreement';
 
 // Lazy load below-the-fold components
 const TestimonialsSection = React.lazy(() => import('./components/TestimonialsSection'));
@@ -50,6 +52,7 @@ const App = () => {
             <Route path="/landlord-services" element={<LandlordServices />} />
             <Route path="/tenant-services" element={<TenantServices />} />
             <Route path="/faq" element={<FAQPage />} />
+            <Route path="/management-agreement" element={<ManagementAgreement />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
