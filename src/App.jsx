@@ -15,6 +15,7 @@ import TenantServices from './pages/TenantServices';
 import FAQPage from './pages/FAQPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ManagementAgreement from './pages/ManagementAgreement';
+import MaintenanceRequest from './pages/services/MaintenanceRequest';
 
 // Lazy load below-the-fold components
 const TestimonialsSection = React.lazy(() => import('./components/TestimonialsSection'));
@@ -53,6 +54,7 @@ const App = () => {
             <Route path="/tenant-services" element={<TenantServices />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/management-agreement" element={<ManagementAgreement />} />
+            <Route path="/services/maintenance" element={<MaintenanceRequest />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
