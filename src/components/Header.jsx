@@ -11,6 +11,7 @@ import MobileNavItem from './navigation/MobileNavItem';
 import ContactDialog from './ContactDialog';
 import { navigationConfig } from '../constants/navigationConfig';
 
+// Use the navigationConfig
 const navigationSections = {
   forOwners: navigationConfig.forOwners,
   forTenants: navigationConfig.forTenants,
@@ -135,38 +136,50 @@ const Header = memo(() => {
           <Logo />
 
           <nav 
-            className="hidden lg:flex items-center space-x-4 xl:space-x-6 flex-1 justify-center" 
+            className="hidden lg:flex items-center space-x-1 xl:space-x-2 flex-1 justify-center" 
             aria-label="Main navigation"
           >
-            <NavItem title="For Owners" items={navigationSections.forOwners} />
-            <NavItem title="For Tenants" items={navigationSections.forTenants} />
-            <NavItem title="Resources" items={navigationSections.resources} />
-            <NavItem title="About" items={navigationSections.about} />
-            <Link 
-              to="/pricing" 
-              className="px-4 py-2.5 text-base font-medium text-gray-700 dark:text-gray-300 
-                      hover:text-deep-teal dark:hover:text-bright-teal transition-colors 
-                      relative group"
-            >
-              Pricing
-              <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-deep-teal dark:bg-bright-teal 
-                            transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <ContactDialog>
-              <Button 
-                variant="ghost" 
-                className="text-base font-medium text-gray-700 dark:text-gray-300 
+            <div className="px-2 xl:px-3">
+              <NavItem title="For Owners" items={navigationSections.forOwners} />
+            </div>
+            <div className="px-2 xl:px-3">
+              <NavItem title="For Tenants" items={navigationSections.forTenants} />
+            </div>
+            <div className="px-2 xl:px-3">
+              <NavItem title="Resources" items={navigationSections.resources} />
+            </div>
+            <div className="px-2 xl:px-3">
+              <NavItem title="About" items={navigationSections.about} />
+            </div>
+            <div className="px-2 xl:px-3">
+              <Link 
+                to="/pricing" 
+                className="px-4 py-2.5 text-base font-medium text-gray-700 dark:text-gray-300 
                         hover:text-deep-teal dark:hover:text-bright-teal transition-colors 
-                        px-4 py-2.5 h-auto relative group"
+                        relative group inline-block"
               >
-                Contact
+                Pricing
                 <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-deep-teal dark:bg-bright-teal 
-                              transition-all duration-300 group-hover:w-full opacity-0 group-hover:opacity-100"></span>
-              </Button>
-            </ContactDialog>
+                              transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+            </div>
+            <div className="px-2 xl:px-3">
+              <ContactDialog>
+                <Button 
+                  variant="ghost" 
+                  className="text-base font-medium text-gray-700 dark:text-gray-300 
+                          hover:text-deep-teal dark:hover:text-bright-teal transition-colors 
+                          px-4 py-2.5 h-auto relative group"
+                >
+                  Contact
+                  <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-deep-teal dark:bg-bright-teal 
+                                transition-all duration-300 group-hover:w-full opacity-0 group-hover:opacity-100"></span>
+                </Button>
+              </ContactDialog>
+            </div>
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <div className="hidden sm:block">
               <ThemeToggle checked={theme === 'dark'} onChange={handleDarkModeChange} />
             </div>
@@ -199,7 +212,7 @@ const Header = memo(() => {
                   <Link 
                     to="/pricing" 
                     className="block text-base font-medium text-gray-700 dark:text-gray-300 
-                            hover:text-deep-teal dark:hover:text-light-teal px-3 py-3 
+                            hover:text-deep-teal dark:hover:text-light-teal px-4 py-3 
                             border-l-2 border-transparent hover:border-deep-teal dark:hover:border-light-teal 
                             transition-colors"
                   >
@@ -209,7 +222,7 @@ const Header = memo(() => {
                     <Button 
                       variant="ghost" 
                       className="w-full justify-start text-base font-medium text-gray-700 dark:text-gray-300 
-                              hover:text-deep-teal dark:hover:text-light-teal h-auto py-3 px-3
+                              hover:text-deep-teal dark:hover:text-light-teal h-auto py-3 px-4
                               border-l-2 border-transparent hover:border-deep-teal dark:hover:border-light-teal"
                     >
                       Contact

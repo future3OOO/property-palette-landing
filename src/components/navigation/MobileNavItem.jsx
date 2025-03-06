@@ -17,19 +17,21 @@ const MobileNavItem = memo(({ title, items }) => {
         variant="ghost"
         className="w-full justify-between text-gray-700 dark:text-gray-200 
                  hover:text-deep-teal dark:hover:text-light-teal transition-colors 
-                 px-3 py-3 h-auto text-base font-medium"
+                 px-4 py-3 h-auto text-base font-medium"
         onClick={handleToggle}
         aria-expanded={isOpen}
       >
         <span className="text-left">{title}</span>
         <ChevronDown 
-          className={`h-4 w-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+          className={`h-4 w-4 transform transition-transform duration-150 ease-in-out ${isOpen ? "rotate-180" : ""}`}
           aria-hidden="true"
         />
       </Button>
       
       {isOpen && (
-        <div className="ml-5 mt-2 space-y-3 pb-2">
+        <div 
+          className="ml-5 mt-2 space-y-3 pb-3 animate-fade-in"
+        >
           {items.map((section, index) => (
             <div key={index} className="space-y-2.5">
               <h3 className="text-deep-teal dark:text-light-teal font-semibold text-sm">
