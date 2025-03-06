@@ -1,3 +1,4 @@
+
 import React, { useState, memo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
@@ -11,34 +12,23 @@ const MobileNavItem = memo(({ title, items }) => {
   }, []);
 
   return (
-    <div className="transform-gpu" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
+    <div>
       <Button
         variant="ghost"
         className="w-full justify-between text-gray-700 dark:text-gray-300 
-                 hover:text-deep-teal dark:hover:text-light-teal transition-colors"
+                 hover:text-deep-teal dark:hover:text-light-teal transition-colors px-2"
         onClick={handleToggle}
-        style={{
-          willChange: 'transform, color',
-          transform: 'translateZ(0)',
-        }}
       >
         <span>{title}</span>
         <ChevronDown 
-          className={`h-4 w-4 transition-transform duration-75 transform-gpu ${isOpen ? "rotate-180" : ""}`}
-          style={{ willChange: 'transform' }}
+          className={`h-4 w-4 transition-transform duration-75 ${isOpen ? "rotate-180" : ""}`}
         />
       </Button>
       {isOpen && (
-        <div 
-          className="ml-4 mt-2 space-y-4 transform-gpu"
-          style={{
-            willChange: 'transform, opacity',
-            transform: 'translateZ(0)',
-          }}
-        >
+        <div className="ml-4 mt-2 space-y-4">
           {items.map((section, index) => (
             <div key={index} className="space-y-2">
-              <h3 className="text-deep-teal dark:text-light-teal font-medium">
+              <h3 className="text-deep-teal dark:text-light-teal font-medium text-sm">
                 {section.category}
               </h3>
               <div className="ml-2 space-y-2">
@@ -47,17 +37,12 @@ const MobileNavItem = memo(({ title, items }) => {
                     key={itemIndex} 
                     className="text-gray-600 dark:text-gray-300 
                              hover:text-deep-teal dark:hover:text-light-teal 
-                             transition-colors transform-gpu"
-                    style={{ willChange: 'transform, color' }}
+                             transition-colors text-sm"
                   >
                     {item.to ? (
                       <Link 
                         to={item.to} 
                         className="block hover:translate-x-1 transition-transform duration-75"
-                        style={{
-                          willChange: 'transform',
-                          transform: 'translateZ(0)',
-                        }}
                       >
                         {item.label}
                       </Link>
