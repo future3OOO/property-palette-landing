@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { Info } from 'lucide-react';
 import {
@@ -7,9 +8,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const FAQAccordion = ({ items, categoryKey }) => (
+const FAQAccordion = ({ items = [], categoryKey }) => (
   <Accordion type="single" collapsible className="space-y-4">
-    {items.map((item, index) => (
+    {items && items.map((item, index) => (
       <motion.div
         key={index}
         initial={{ opacity: 0, y: 20 }}

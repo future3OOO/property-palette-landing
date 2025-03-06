@@ -12,10 +12,11 @@ import ContactPage from './pages/ContactPage';
 import PricingPage from './pages/PricingPage';
 import LandlordServices from './pages/LandlordServices';
 import TenantServices from './pages/TenantServices';
-import FAQPage from './pages/FAQPage';
+import FAQ from './pages/FAQ'; // Import the FAQ page correctly
 import NotFoundPage from './pages/NotFoundPage';
 import ManagementAgreement from './pages/ManagementAgreement';
 import MaintenanceRequest from './pages/services/MaintenanceRequest';
+import RentalApplication from './pages/RentalApplication'; // Import Rental Application
 
 // Lazy load below-the-fold components
 const TestimonialsSection = React.lazy(() => import('./components/TestimonialsSection'));
@@ -52,9 +53,10 @@ const App = () => {
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/landlord-services" element={<LandlordServices />} />
             <Route path="/tenant-services" element={<TenantServices />} />
-            <Route path="/faq" element={<FAQPage />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/management-agreement" element={<ManagementAgreement />} />
             <Route path="/services/maintenance" element={<MaintenanceRequest />} />
+            <Route path="/rental-application" element={<RentalApplication />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
