@@ -1,6 +1,6 @@
+
 import React, { useState } from 'react';
 import { FormProvider } from '@/context/FormContext';
-import Header from '@/components/Header';
 import PersonalInfoForm from '@/components/maintenance/PersonalInfoForm';
 import PropertyDetailsForm from '@/components/maintenance/PropertyDetailsForm';
 import IssueDescriptionForm from '@/components/maintenance/IssueDescriptionForm';
@@ -10,7 +10,6 @@ import { ChevronRight, ChevronLeft, Send } from "lucide-react";
 
 const MaintenanceRequest = () => {
   const [step, setStep] = useState(1);
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const renderStep = () => {
     switch (step) {
@@ -41,8 +40,6 @@ const MaintenanceRequest = () => {
   return (
     <FormProvider>
       <div className="min-h-screen flex flex-col bg-gradient-to-br from-cream to-soft-gray dark:from-charcoal dark:to-dark-charcoal">
-        <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-        
         <div className="flex-1 py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto bg-white dark:bg-charcoal rounded-xl shadow-xl p-8">
             <div className="text-center mb-8">

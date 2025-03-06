@@ -1,5 +1,5 @@
+
 import React, { useState, memo, useCallback, Suspense } from 'react';
-import Header from '../components/Header';
 import HeroSection from '../components/HeroSection';
 import ServicesSection from '../components/ServicesSection';
 import BenefitsSection from '../components/BenefitsSection';
@@ -21,20 +21,14 @@ const SectionLoader = () => (
 
 const Index = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const handleChatToggle = useCallback((isOpen) => {
     setIsChatOpen(isOpen);
   }, []);
 
-  const handleDarkModeToggle = useCallback((isDark) => {
-    setIsDarkMode(isDark);
-  }, []);
-
   return (
     <div className="flex flex-col min-h-screen">
       <ScrollProgress />
-      <Header isDarkMode={isDarkMode} setIsDarkMode={handleDarkModeToggle} />
       <main className="flex-grow">
         <HeroSection />
         <ServicesSection />

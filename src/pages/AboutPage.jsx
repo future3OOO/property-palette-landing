@@ -1,3 +1,4 @@
+
 import React from 'react';
 import AboutHero from '@/components/about/AboutHero';
 import AboutTimeline from '@/components/about/AboutTimeline';

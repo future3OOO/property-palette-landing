@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
@@ -10,17 +10,10 @@ import ComparisonTable from '@/components/pricing/ComparisonTable';
 import PricingFAQ from '@/components/pricing/PricingFAQ';
 
 const Pricing = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', isDarkMode);
-  }, [isDarkMode]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-cream to-white dark:from-charcoal dark:to-dark-charcoal">
-      <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      
       <main className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-7xl mx-auto space-y-24">
           <PricingHeader />

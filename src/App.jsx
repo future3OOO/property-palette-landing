@@ -1,5 +1,5 @@
 
-import React, { Suspense, useState } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -12,11 +12,11 @@ import ContactPage from './pages/ContactPage';
 import PricingPage from './pages/PricingPage';
 import LandlordServices from './pages/LandlordServices';
 import TenantServices from './pages/TenantServices';
-import FAQ from './pages/FAQ'; // Import the FAQ page correctly
+import FAQ from './pages/FAQ';
 import NotFoundPage from './pages/NotFoundPage';
 import ManagementAgreement from './pages/ManagementAgreement';
 import MaintenanceRequest from './pages/services/MaintenanceRequest';
-import RentalApplication from './pages/RentalApplication'; // Import Rental Application
+import RentalApplication from './pages/RentalApplication';
 
 // Lazy load below-the-fold components
 const TestimonialsSection = React.lazy(() => import('./components/TestimonialsSection'));
@@ -24,13 +24,11 @@ const ROICalculatorSection = React.lazy(() => import('./components/ROICalculator
 const CallToActionSection = React.lazy(() => import('./components/CallToActionSection'));
 
 const App = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
         <ScrollProgress />
-        <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+        <Header />
         <main className="flex-grow">
           <Routes>
             <Route 

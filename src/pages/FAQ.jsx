@@ -1,7 +1,7 @@
+
 import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import Header from '@/components/Header';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import FAQHeader from '@/components/FAQ/FAQHeader';
 import FAQAccordion from '@/components/FAQ/FAQAccordion';
@@ -25,7 +25,6 @@ const FAQ = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-cream to-white dark:from-charcoal dark:to-gray-900">
-      <Header />
       <motion.section 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
