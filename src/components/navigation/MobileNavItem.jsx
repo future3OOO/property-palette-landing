@@ -12,26 +12,30 @@ const MobileNavItem = memo(({ title, items }) => {
   }, []);
 
   return (
-    <div className="w-full">
+    <div className="w-full rounded-md overflow-hidden">
       <Button
         variant="ghost"
-        className="w-full justify-between text-gray-700 dark:text-gray-300 
-                 hover:text-deep-teal dark:hover:text-light-teal transition-colors px-2 py-2 h-auto"
+        className="w-full justify-between text-gray-700 dark:text-gray-200 
+                 hover:text-deep-teal dark:hover:text-light-teal transition-colors 
+                 px-3 py-3 h-auto text-base font-medium"
         onClick={handleToggle}
+        aria-expanded={isOpen}
       >
-        <span className="text-left text-base">{title}</span>
+        <span className="text-left">{title}</span>
         <ChevronDown 
-          className={`h-4 w-4 transition-transform duration-75 ${isOpen ? "rotate-180" : ""}`}
+          className={`h-4 w-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+          aria-hidden="true"
         />
       </Button>
+      
       {isOpen && (
-        <div className="ml-4 mt-2 space-y-2">
+        <div className="ml-5 mt-2 space-y-3 pb-2">
           {items.map((section, index) => (
-            <div key={index} className="space-y-1.5">
-              <h3 className="text-deep-teal dark:text-light-teal font-medium text-sm">
+            <div key={index} className="space-y-2.5">
+              <h3 className="text-deep-teal dark:text-light-teal font-semibold text-sm">
                 {section.category}
               </h3>
-              <div className="ml-2 space-y-1.5">
+              <div className="ml-2 space-y-2.5">
                 {section.items.map((item, itemIndex) => (
                   <div 
                     key={itemIndex} 
@@ -42,12 +46,12 @@ const MobileNavItem = memo(({ title, items }) => {
                     {item.to ? (
                       <Link 
                         to={item.to} 
-                        className="block py-1 hover:translate-x-1 transition-transform duration-75"
+                        className="block py-1.5 hover:translate-x-1 transition-transform duration-150 relative"
                       >
                         {item.label}
                       </Link>
                     ) : (
-                      <span className="block py-1 cursor-pointer">{item.label}</span>
+                      <span className="block py-1.5 cursor-pointer">{item.label}</span>
                     )}
                   </div>
                 ))}
