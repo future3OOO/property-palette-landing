@@ -1,16 +1,12 @@
-import React, { useState } from 'react';
+
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, FileText, ArrowRight } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import Header from '@/components/Header';
 
 const RentalApplication = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cream to-soft-gray dark:from-charcoal dark:to-dark-charcoal">
-      <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      
+    <div className="min-h-screen bg-gradient-to-br from-cream to-soft-gray dark:from-charcoal dark:to-dark-charcoal">      
       <main className="container mx-auto px-4 py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
