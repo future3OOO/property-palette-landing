@@ -51,7 +51,7 @@ const NavItem = memo(({ title, items }) => {
   ), [items]);
 
   return (
-    <NavigationMenu>
+    <NavigationMenu className="max-w-none">
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger 
@@ -65,8 +65,7 @@ const NavItem = memo(({ title, items }) => {
             {title}
           </NavigationMenuTrigger>
           <NavigationMenuContent 
-            className="min-w-[280px] sm:min-w-[320px] bg-white dark:bg-dark-charcoal rounded-lg p-4 sm:p-6 
-                     shadow-medium"
+            className="min-w-[280px] sm:min-w-[320px] max-h-[85vh] overflow-y-auto bg-white dark:bg-dark-charcoal rounded-lg p-4 sm:p-6 shadow-medium"
           >
             {menuContent()}
           </NavigationMenuContent>

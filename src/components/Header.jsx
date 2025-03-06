@@ -22,6 +22,7 @@ const Header = memo(() => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
   
   // After mounting, we can access the theme
   useEffect(() => {
@@ -140,7 +141,7 @@ const Header = memo(() => {
               Sign In
             </Button>
 
-            <Sheet>
+            <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
               <SheetTrigger asChild>
                 <Button 
                   variant="ghost" 
@@ -151,8 +152,11 @@ const Header = memo(() => {
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[280px] sm:w-80 bg-white dark:bg-charcoal">
-                <nav className="flex flex-col space-y-4 mt-8">
+              <SheetContent 
+                side="right" 
+                className="w-[280px] sm:w-80 bg-white dark:bg-charcoal p-0 overflow-y-auto"
+              >
+                <nav className="flex flex-col space-y-4 mt-8 p-4">
                   <div className="sm:hidden flex items-center justify-center gap-2 mb-4 pb-4 border-b border-gray-100 dark:border-gray-800">
                     <Sun className="h-4 w-4 text-gray-600 dark:text-gray-400" />
                     <Switch
@@ -169,7 +173,7 @@ const Header = memo(() => {
                   <MobileNavItem title="About" items={navigationSections.about} />
                   <Link 
                     to="/pricing" 
-                    className="block text-lg text-gray-700 dark:text-gray-300 hover:text-deep-teal dark:hover:text-light-teal"
+                    className="block text-lg text-gray-700 dark:text-gray-300 hover:text-deep-teal dark:hover:text-light-teal px-2 py-2"
                   >
                     Pricing
                   </Link>
@@ -178,7 +182,7 @@ const Header = memo(() => {
                       Contact
                     </Button>
                   </ContactDialog>
-                  <Button className="w-full bg-deep-teal text-white hover:bg-light-teal dark:bg-light-teal dark:text-deep-teal dark:hover:bg-deep-teal dark:hover:text-white">
+                  <Button className="w-full bg-deep-teal text-white hover:bg-light-teal dark:bg-light-teal dark:text-deep-teal dark:hover:bg-deep-teal dark:hover:text-white mt-2">
                     Sign In
                   </Button>
                 </nav>

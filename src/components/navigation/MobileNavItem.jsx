@@ -12,14 +12,14 @@ const MobileNavItem = memo(({ title, items }) => {
   }, []);
 
   return (
-    <div>
+    <div className="w-full">
       <Button
         variant="ghost"
         className="w-full justify-between text-gray-700 dark:text-gray-300 
                  hover:text-deep-teal dark:hover:text-light-teal transition-colors px-2"
         onClick={handleToggle}
       >
-        <span>{title}</span>
+        <span className="text-left">{title}</span>
         <ChevronDown 
           className={`h-4 w-4 transition-transform duration-75 ${isOpen ? "rotate-180" : ""}`}
         />
