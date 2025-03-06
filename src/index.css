@@ -68,8 +68,12 @@
     @apply font-inter font-semibold tracking-tight text-deep-teal dark:text-light-teal;
   }
 
+  .light {
+    @apply text-gray-900 bg-white;
+  }
+
   .dark {
-    @apply text-gray-100;
+    @apply text-gray-100 bg-charcoal;
   }
 
   .dark p {

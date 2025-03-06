@@ -9,7 +9,6 @@ import MobileNavItem from './navigation/MobileNavItem';
 import ContactDialog from './ContactDialog';
 import { navigationConfig } from '../constants/navigationConfig';
 
-// Memoize navigation sections to prevent unnecessary rerenders
 const navigationSections = {
   forOwners: navigationConfig.forOwners,
   forTenants: navigationConfig.forTenants,
@@ -22,7 +21,6 @@ const Header = memo(({ isDarkMode, setIsDarkMode }) => {
     setIsDarkMode(checked);
   }, [setIsDarkMode]);
 
-  // Pre-render navigation items for instant hover response
   const navItems = useCallback(() => (
     <>
       <NavItem title="For Owners" items={navigationSections.forOwners} />
@@ -36,7 +34,6 @@ const Header = memo(({ isDarkMode, setIsDarkMode }) => {
     <header className="sticky top-0 bg-white/95 dark:bg-charcoal/95 backdrop-blur-md shadow-sm z-50 transition-all duration-75 ease-in-out border-b border-gray-100 dark:border-gray-800">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1400px]">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
           <Link 
             to="/" 
             className="flex items-center shrink-0 hover:opacity-90 transition-opacity"
@@ -75,7 +72,6 @@ const Header = memo(({ isDarkMode, setIsDarkMode }) => {
             </span>
           </Link>
 
-          {/* Main Navigation */}
           <nav className="hidden lg:flex items-center space-x-8 flex-1 justify-center transform-gpu" 
                aria-label="Main navigation"
                style={{
@@ -96,9 +92,7 @@ const Header = memo(({ isDarkMode, setIsDarkMode }) => {
             </ContactDialog>
           </nav>
 
-          {/* Right Side Actions */}
           <div className="flex items-center gap-6">
-            {/* Theme Toggle */}
             <div className="flex items-center gap-3">
               <Sun className="h-4 w-4 text-gray-600 dark:text-gray-400" />
               <Switch
@@ -110,7 +104,6 @@ const Header = memo(({ isDarkMode, setIsDarkMode }) => {
               <Moon className="h-4 w-4 text-gray-600 dark:text-gray-400" />
             </div>
 
-            {/* Sign In Button */}
             <Button
               variant="outline"
               className="hidden lg:inline-flex border-deep-teal text-deep-teal hover:bg-deep-teal hover:text-white dark:border-light-teal dark:text-light-teal dark:hover:bg-light-teal dark:hover:text-dark-charcoal transition-all font-medium"
@@ -118,7 +111,6 @@ const Header = memo(({ isDarkMode, setIsDarkMode }) => {
               Sign In
             </Button>
 
-            {/* Mobile Menu */}
             <Sheet>
               <SheetTrigger asChild>
                 <Button 
