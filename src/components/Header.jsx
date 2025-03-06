@@ -1,9 +1,11 @@
-import React, { useCallback, memo } from 'react';
+
+import React, { useCallback, memo, useState, useEffect } from 'react';
 import { Menu, Sun, Moon } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link } from 'react-router-dom';
+import { useTheme } from 'next-themes';
 import NavItem from './navigation/NavItem';
 import MobileNavItem from './navigation/MobileNavItem';
 import ContactDialog from './ContactDialog';
@@ -16,10 +18,18 @@ const navigationSections = {
   about: navigationConfig.about,
 };
 
-const Header = memo(({ isDarkMode, setIsDarkMode }) => {
+const Header = memo(() => {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  
+  // After mounting, we can access the theme
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const handleDarkModeChange = useCallback((checked) => {
-    setIsDarkMode(checked);
-  }, [setIsDarkMode]);
+    setTheme(checked ? 'dark' : 'light');
+  }, [setTheme]);
 
   const navItems = useCallback(() => (
     <>
@@ -29,6 +39,11 @@ const Header = memo(({ isDarkMode, setIsDarkMode }) => {
       <NavItem title="About" items={navigationSections.about} />
     </>
   ), []);
+
+  // Use the mounted check to avoid hydration mismatch
+  if (!mounted) {
+    return null; // Render nothing until mounted to prevent hydration mismatch
+  }
 
   return (
     <header className="sticky top-0 bg-white/95 dark:bg-charcoal/95 backdrop-blur-md shadow-sm z-50 transition-all duration-75 ease-in-out border-b border-gray-100 dark:border-gray-800">
@@ -96,7 +111,7 @@ const Header = memo(({ isDarkMode, setIsDarkMode }) => {
             <div className="flex items-center gap-3">
               <Sun className="h-4 w-4 text-gray-600 dark:text-gray-400" />
               <Switch
-                checked={isDarkMode}
+                checked={theme === 'dark'}
                 onCheckedChange={handleDarkModeChange}
                 className="data-[state=checked]:bg-light-teal"
                 aria-label="Toggle dark mode"
