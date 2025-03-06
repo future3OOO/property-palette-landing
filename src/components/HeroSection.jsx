@@ -67,7 +67,7 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
-                className="bg-deep-teal hover:bg-soft-teal text-white dark:bg-light-teal dark:hover:bg-bright-teal dark:text-deep-teal font-medium transition-all duration-300 group rounded-full px-8 py-7 h-auto shadow-lg hover:shadow-deep-teal/20 dark:hover:shadow-light-teal/20 hover:scale-105"
+                className="bg-deep-teal hover:bg-soft-teal text-white dark:bg-light-teal dark:hover:bg-bright-teal dark:text-deep-teal font-medium transition-all duration-300 group rounded-full px-6 py-5 h-12 shadow-md hover:shadow-deep-teal/20 dark:hover:shadow-light-teal/20"
               >
                 Get Started Now
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -75,7 +75,7 @@ const HeroSection = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-deep-teal hover:bg-deep-teal/5 text-deep-teal dark:border-light-teal dark:hover:bg-light-teal/5 dark:text-light-teal transition-all duration-300 group rounded-full hover:scale-105"
+                className="border-deep-teal hover:bg-deep-teal/5 text-deep-teal dark:border-light-teal dark:hover:bg-light-teal/5 dark:text-light-teal transition-all duration-300 group rounded-full h-12"
               >
                 <Phone className="mr-2 h-4 w-4" />
                 Contact Us
